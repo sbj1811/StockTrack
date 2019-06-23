@@ -12,22 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UI.Details.StockDetail"></activity>
         <activity
             android:name=".UI.SearchActivity"
             android:label="@string/title_activity_search"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
-
         </activity>
+
         <meta-data
             android:name="android.app.default_searchable"
             android:value="com.sjani.stocktrack.UI.SearchActivity" />
+
         <activity
             android:name=".UI.MainActivity"
             android:label="@string/app_name"
@@ -38,7 +41,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider android:name=".UI.SuggestionProvider"
+
+        <provider
+            android:name=".UI.SuggestionProvider"
             android:authorities="com.sjani.stocktrack.UI.SuggestionProvider" />
     </application>
 

@@ -1,11 +1,16 @@
 package com.sjani.stocktrack.UI;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.facebook.stetho.Stetho;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sjani.stocktrack.R;
+import com.sjani.stocktrack.UI.Details.StockDetail;
+import com.sjani.stocktrack.UI.Details.StockDetailFragment;
 import com.sjani.stocktrack.Utils.CustomGestureListener;
 import com.sjani.stocktrack.Utils.DataRepository;
 import com.sjani.stocktrack.Utils.FactoryUtils;
@@ -32,6 +37,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements ListItemClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String SYMBOL = "symbol";
 
     @BindView(R.id.rv_main)
     RecyclerView recyclerView;
@@ -41,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements ListItemClickList
     MainListAdapter adapter;
     SearchListViewModel viewModel;
     SwipeController swipeController;
+    private boolean mDualPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +123,20 @@ public class MainActivity extends AppCompatActivity implements ListItemClickList
 
     @Override
     public void onItemClick(String symbol) {
-        Toast.makeText(this,symbol,Toast.LENGTH_SHORT).show();
+        if (mDualPane){
+            StockDetailFragment stockDetailFragment = StockDetailFragment.newInstance(symbol);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.detail_container,stockDetailFragment)
+                    .commit();
+        } else {
+            Intent intent = new Intent(this, StockDetail.class);
+            intent.putExtra(SYMBOL,symbol);
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                startActivity(intent);
+                this.overridePendingTransition(R.xml.slide_from_right,R.xml.slide_from_left);
+            } else {
+                startActivity(intent);
+            }
+        }
     }
 }
