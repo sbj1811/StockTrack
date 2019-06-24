@@ -135,10 +135,10 @@ public class StockDetailFragment extends Fragment {
         lowTV.setText(low);
         volumeTV.setText(vol);
         changeTV.setText(changeVal);
-        createChart();
+        createChart(Quote.get01Symbol());
     }
 
-    private void createChart(){
+    private void createChart(String symbol){
         cartesian = AnyChart.line();
 
         cartesian.animation(true);
@@ -185,8 +185,8 @@ public class StockDetailFragment extends Fragment {
 
 
         Line series1 = cartesian.line(series1Mapping);
-        series1.name("Brandy");
-        series1.hovered().markers().enabled(true);
+        series1.name(symbol);
+        series1.stroke("#0A995B");
         series1.hovered().markers()
                 .type(MarkerType.CIRCLE)
                 .size(4d);
