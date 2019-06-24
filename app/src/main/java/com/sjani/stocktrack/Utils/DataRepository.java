@@ -55,6 +55,10 @@ public class DataRepository {
         return quoteDao.getAllQuotes();
     }
 
+    public LiveData<GlobalQuote> getQuoteFromDb(String symbol){
+        return quoteDao.getSymbolQuote(symbol);
+    }
+
     public void removeQuote(String symbol){
         Observable.fromCallable(() -> {
             quoteDao.deleteSymbolQuote(symbol);
@@ -70,11 +74,8 @@ public class DataRepository {
         StockApiConnection.getApi().getSymbolQuote("GLOBAL_QUOTE",symbol,apiKey).enqueue(new Callback<SymbolQuote>() {
             @Override
             public void onResponse(Call<SymbolQuote> call, Response<SymbolQuote> response) {
-                Log.e(TAG, "onResponse: HERE: "+response);
-                Log.e(TAG, "onResponse: HERE: "+response.body());
                 GlobalQuote quote = response.body().getGlobalQuote();
                 quote.set_11Name(name);
-                Log.e(TAG, "onResponse: HERE "+quote.toString());
                 Observable.fromCallable(() -> {
                     quoteDao.save(quote);
                     return false;

@@ -1,7 +1,5 @@
 package com.sjani.stocktrack.UI;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -22,7 +20,8 @@ public class SearchListViewModel extends ViewModel {
     String symbol;
     private MutableLiveData<SearchResult> searchResultMutableLiveData;
 
-    private LiveData<List<GlobalQuote>> quotesMutableLiveData;
+    private LiveData<List<GlobalQuote>> quotesLiveData;
+    private LiveData<GlobalQuote> quoteLiveData;
 
     public SearchListViewModel(DataRepository repository, String apiKey, String symbol) {
         this.repository = repository;
@@ -37,8 +36,13 @@ public class SearchListViewModel extends ViewModel {
     }
 
     public LiveData<List<GlobalQuote>> getAllQuotes() {
-        quotesMutableLiveData = this.repository.getAllQuotesFromDb();
-        return quotesMutableLiveData;
+        quotesLiveData = this.repository.getAllQuotesFromDb();
+        return quotesLiveData;
+    }
+
+    public LiveData<GlobalQuote> getQuote(String symbol) {
+        quoteLiveData = this.repository.getQuoteFromDb(symbol);
+        return quoteLiveData;
     }
 
     public void removeQuotefromDb(String symbol){

@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sjani.stocktrack.Models.Quote.GlobalQuote;
 import com.sjani.stocktrack.R;
 import com.sjani.stocktrack.Utils.ListItemClickListener;
+import com.sjani.stocktrack.Utils.NumberUtil;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -46,12 +46,9 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MainLi
         GlobalQuote quote = globalQuoteList.get(position);
         holder.symbolTV.setText(quote.get01Symbol());
         holder.nameTV.setText(quote.get_11Name());
-        String[] change = quote.get10ChangePercent().split("%");
-        DecimalFormat df = new DecimalFormat("#.##");
-        df.setRoundingMode(RoundingMode.DOWN);
-        String price = df.format(Double.parseDouble(quote.get05Price()));
-        Double pr = Double.parseDouble(change[0]);
-        String changeVal = df.format(pr)+"%";
+        String price = NumberUtil.formatPrice(quote.get05Price());
+        Double pr = NumberUtil.getDoublePrice(quote.get10ChangePercent());
+        String changeVal = NumberUtil.formatPercent(pr);
         if(pr<0.0){
             holder.changeTV.setBackgroundColor(context.getResources().getColor(R.color.red));
         } else {

@@ -1,14 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.Details.StockDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="8dp"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/name_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/std_margin"
+        android:layout_marginStart="@dimen/std_margin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/detail_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            tools:text="GOOG" />
+
+        <TextView
+            android:id="@+id/detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_padding"
+            android:textSize="@dimen/std_font_size"
+            tools:text="Google Inc." />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/price_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/name_ll"
+        app:layout_constraintTop_toBottomOf="@+id/name_ll">
+
+        <TextView
+            android:id="@+id/detail_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/std_font_size"
+            tools:text="900.50" />
+
+        <TextView
+            android:id="@+id/detail_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_padding"
+            android:background="@drawable/rounded_corners"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:textSize="12sp"
+            tools:text="0.56%" />
+
+    </LinearLayout>
+
+    <com.anychart.AnyChartView
+        android:id="@+id/any_chart_view"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:layout_marginTop="@dimen/std_margin"
+        app:layout_constraintTop_toBottomOf="@+id/price_ll" />
+
+    <LinearLayout
+        android:id="@+id/open_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/std_margin"
+        android:layout_marginTop="@dimen/std_margin"
+        android:layout_marginEnd="@dimen/std_margin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/any_chart_view">
+
+        <TextView
+            android:id="@+id/detail_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/Open"
+            android:textSize="@dimen/std_font_size" />
+
+        <TextView
+            android:id="@+id/detail_open_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_padding"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:textSize="@dimen/std_font_size"
+            tools:text="900.50" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/vol_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/std_margin"
+        android:layout_marginTop="@dimen/std_margin"
+        android:layout_marginEnd="@dimen/std_margin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/open_ll">
+
+        <TextView
+            android:id="@+id/detail_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/Volume"
+            android:textSize="@dimen/std_font_size" />
+
+        <TextView
+            android:id="@+id/detail_volume_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_padding"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:textSize="@dimen/std_font_size"
+            tools:text="36.7M" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/high_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/std_margin"
+        android:layout_marginTop="@dimen/std_margin"
+        android:layout_marginEnd="@dimen/std_margin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/any_chart_view">
+
+        <TextView
+            android:id="@+id/detail_high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_padding"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/High"
+            android:textSize="@dimen/std_font_size" />
+
+        <TextView
+            android:id="@+id/detail_high_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_padding"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:textSize="@dimen/std_font_size"
+            tools:text="900.50" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/low_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/std_margin"
+        android:layout_marginTop="@dimen/std_margin"
+        android:layout_marginEnd="@dimen/std_margin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/high_ll">
+
+        <TextView
+            android:id="@+id/detail_low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_padding"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/Low"
+            android:textSize="@dimen/std_font_size" />
+
+        <TextView
+            android:id="@+id/detail_low_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/std_padding"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:textSize="@dimen/std_font_size"
+            tools:text="900.50" />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

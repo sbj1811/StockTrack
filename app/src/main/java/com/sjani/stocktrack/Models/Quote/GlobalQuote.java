@@ -36,6 +36,7 @@ public class GlobalQuote {
     @SerializedName("05. price")
     @Expose
     private String _05Price;
+    @ColumnInfo(name = "volume")
     @SerializedName("06. volume")
     @Expose
     private String _06Volume;

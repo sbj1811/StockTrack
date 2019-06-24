@@ -13,8 +13,6 @@ public class StockApiConnection {
 
     public static EndpointInterface getApi(){
 
-        Log.e(TAG, "getApi: HERE ");
-
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
