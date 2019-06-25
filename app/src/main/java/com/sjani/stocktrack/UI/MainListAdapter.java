@@ -1,7 +1,6 @@
 package com.sjani.stocktrack.UI;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sjani.stocktrack.Models.Quote.GlobalQuote;
 import com.sjani.stocktrack.R;
 import com.sjani.stocktrack.Utils.ListItemClickListener;
-import com.sjani.stocktrack.Utils.NumberUtil;
+import com.sjani.stocktrack.Utils.NumberUtils;
 
 
 import java.util.List;
@@ -46,9 +45,9 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MainLi
         GlobalQuote quote = globalQuoteList.get(position);
         holder.symbolTV.setText(quote.get01Symbol());
         holder.nameTV.setText(quote.get_11Name());
-        String price = NumberUtil.formatPrice(quote.get05Price());
-        Double pr = NumberUtil.getDoublePrice(quote.get10ChangePercent());
-        String changeVal = NumberUtil.formatPercent(pr);
+        String price = NumberUtils.formatPrice(quote.get05Price());
+        Double pr = NumberUtils.getDoublePrice(quote.get10ChangePercent());
+        String changeVal = NumberUtils.formatPercent(pr);
         if(pr<0.0){
             holder.changeTV.setBackgroundColor(context.getResources().getColor(R.color.red));
         } else {

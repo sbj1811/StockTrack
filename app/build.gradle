@@ -61,4 +61,7 @@ dependencies {
     implementation "androidx.work:work-runtime:$work_version"
     implementation "androidx.work:work-rxjava2:$work_version"
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.8.5'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.5'
 }

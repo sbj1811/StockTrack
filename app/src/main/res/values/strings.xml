@@ -8,4 +8,12 @@
     <string name="High">High</string>
     <string name="Low">Low</string>
     <string name="Volume">Volume</string>
+    <string name="daily">daily</string>
+    <string name="function_intraday">TIME_SERIES_INTRADAY</string>
+    <string name="function_daily">TIME_SERIES_DAILY</string>
+    <string name="daily_weekly">daily weekly</string>
+    <string name="daily_monthly">daily monthly</string>
+    <string name="daily_three_monthly">daily three monthly</string>
+    <string name="function_monthly">TIME_SERIES_MONTHLY</string>
+    <string name="monthly_one_year">monthly one year</string>
 </resources>

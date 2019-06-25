@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/std_padding"
             android:textSize="@dimen/std_font_size"
+            android:textColor="@android:color/black"
             tools:text="Google Inc." />
 
     </LinearLayout>
@@ -54,6 +55,7 @@
             android:id="@+id/detail_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/std_font_size"
             tools:text="900.50" />
 
@@ -63,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/std_padding"
             android:background="@drawable/rounded_corners"
+            android:textColor="@android:color/white"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:textSize="12sp"
@@ -70,12 +73,74 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/price_ll"
+        app:layout_constraintBottom_toTopOf="@id/any_chart_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent">
+
+        <Button
+            android:id="@+id/detail_daily"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button"
+            android:layout_margin="@dimen/std_margin"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="1D" />
+
+        <Button
+            android:id="@+id/detail_weekly"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button"
+            android:layout_margin="@dimen/std_margin"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="1W" />
+
+        <Button
+            android:id="@+id/detail_month"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button"
+            android:layout_margin="@dimen/std_margin"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="1M" />
+
+        <Button
+            android:id="@+id/detail_three_month"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button"
+            android:layout_margin="@dimen/std_margin"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="3M" />
+
+        <Button
+            android:id="@+id/detail_one_year"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/button"
+            android:layout_margin="@dimen/std_margin"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="1Y" />
+
+    </LinearLayout>
+
     <com.anychart.AnyChartView
         android:id="@+id/any_chart_view"
         android:layout_width="match_parent"
         android:layout_height="256dp"
-        android:layout_marginTop="@dimen/std_margin"
-        app:layout_constraintTop_toBottomOf="@+id/price_ll" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonPanel" />
 
     <LinearLayout
         android:id="@+id/open_ll"

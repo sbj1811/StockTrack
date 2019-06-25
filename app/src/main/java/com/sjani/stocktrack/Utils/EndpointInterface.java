@@ -3,6 +3,7 @@ package com.sjani.stocktrack.Utils;
 import com.sjani.stocktrack.Models.Quote.SymbolQuote;
 import com.sjani.stocktrack.Models.Search.SearchResult;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -16,5 +17,11 @@ public interface EndpointInterface {
 
     @GET("/query")
     Call<SymbolQuote> getSymbolQuote(@Query("function") String function, @Query("symbol") String symbol, @Query("apikey") String apiKey);
+
+    @GET("/query")
+    Call<ResponseBody> getDailySeries(@Query("function") String function, @Query("symbol") String symbol, @Query("apikey") String apiKey);
+
+    @GET("/query")
+    Call<ResponseBody> getDailySeriesIntra(@Query("function") String function, @Query("symbol") String symbol, @Query("apikey") String apiKey, @Query("interval") String interval);
 
 }

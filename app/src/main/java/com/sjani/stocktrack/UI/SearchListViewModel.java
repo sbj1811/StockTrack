@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.sjani.stocktrack.Models.Daily.Date;
 import com.sjani.stocktrack.Models.Quote.GlobalQuote;
 import com.sjani.stocktrack.Models.Search.SearchResult;
 import com.sjani.stocktrack.Utils.DataRepository;
@@ -28,7 +29,6 @@ public class SearchListViewModel extends ViewModel {
         this.apiKey = apiKey;
         this.symbol = symbol;
         searchResultMutableLiveData = this.repository.searchSymbols(apiKey, symbol);
-
     }
 
     public LiveData<SearchResult> getSearchResults() {
@@ -51,6 +51,10 @@ public class SearchListViewModel extends ViewModel {
 
     public void setQuote(String symbol, String name) {
         this.repository.saveSymbolQuote(apiKey, symbol, name);
+    }
+
+    public LiveData<List<Date>> getDailySymbolData(String symbol, String function) {
+        return this.repository.getSymbolData(apiKey,symbol,function);
     }
 
     public void setupPeriodicRefreshWork(){
